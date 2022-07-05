@@ -48,7 +48,7 @@ public class UsuarioService {
 	
 	
 	public Usuario alteraSenha(UsuarioRecuperacaoSenhaDTO usuarioSenhaDTO) {
-		Usuario usuario = usuarioRepository.findById(usuarioSenhaDTO.getIdUsuario()).get();
+		Usuario usuario = usuarioRepository.findByEmail(usuarioSenhaDTO.getEmail()).get();
 		usuario.setSenha(usuarioSenhaDTO.getSenha());
 		return usuarioRepository.save(usuario);
 	}
