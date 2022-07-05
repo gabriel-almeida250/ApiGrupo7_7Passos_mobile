@@ -1,0 +1,18 @@
+package com.residencia.comercio.controllers;
+
+import javax.validation.Valid;
+
+
+import com.residencia.comercio.entities.Produto;
+import com.residencia.comercio.services.UsuarioService;
+
+public class UsuarioController {
+
+	UsuarioService usuarioService;
+	
+	@PostMapping
+	public ResponseEntity<Produto> save(@Valid @RequestBody Produto produto){
+		return new ResponseEntity<>(produtoService.save(produto), HttpStatus.CREATED);
+	}
+	
+}

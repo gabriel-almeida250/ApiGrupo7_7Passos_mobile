@@ -1,0 +1,30 @@
+server.servlet.context-path		= /comercio-seguro 
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto			= none
+spring.datasource.url					= jdbc:postgresql://192.168.220.129:15432/comercio
+spring.datasource.username				= postgres
+spring.datasource.password				= Postgres2019!
+logging.level.org.hibernate.SQL								= DEBUG
+logging.level.org.hibernate.type.descriptor.sql.BasicBinder	= INFO
+logging.level.org.hibernate.type							= INFO
+
+#Propriedades de e-mail
+spring.mail.host=smtp.mailtrap.io
+spring.mail.port=587
+spring.mail.username=3af78f0ed6ae5a
+spring.mail.password=c4c440f728332b
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+spring.mail.properties.mail.smtp.starttls.required=true
+spring.mail.properties.mail.smtp.ssl.enable=false
+spring.mail.test-connection=true
+
+#Propriedades customizadas
+pasta.arquivos.imagem = E:\\_workspace_residencia\\arquivos_imagem
+spring.servlet.multipart.max-file-size = 10MB
+spring.servlet.multipart.max-request-size = 10MB
+
+mail.from=alexandre.paixao@docente.firjan.senai.br
+
+#Seguranca JWT
+jwt.secret=gf98gfdg7u8f908u098g
