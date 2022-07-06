@@ -17,13 +17,18 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.residencia.comercio.dtos.ProdutoDTO;
 import com.residencia.comercio.dtos.ProdutoInterfaceDTO;
+import com.residencia.comercio.entities.Categoria;
 import com.residencia.comercio.entities.Produto;
+import com.residencia.comercio.repositories.CategoriaRepository;
 import com.residencia.comercio.repositories.ProdutoRepository;
 
 @Service
 public class ProdutoService {
 	@Autowired
 	ProdutoRepository produtoRepository;
+	
+	@Autowired
+	CategoriaRepository categoriaRepository;
 	
 	@Autowired
 	ArquivoService arquivoService;
@@ -49,6 +54,31 @@ public class ProdutoService {
 		        				null != entity.getCategoria() ? entity.getCategoria().getNomeCategoria() : null))
 		        .collect(Collectors.toList());
 	}
+	
+	public List<ProdutoDTO> findAllDTOByCategoria(Integer pagina, Integer qtdRegistros, Integer idCategoria){
+		List<Produto> listProduto = new ArrayList<>();
+		Categoria categoria = new Categoria();
+		
+		if (null != idCategoria) {
+			 categoria = categoriaRepository.findById(idCategoria).get();
+		} 
+		
+		if(null != pagina && null != qtdRegistros) { 
+			Pageable page = PageRequest.of(pagina, qtdRegistros);
+			Page<Produto> produtoPageable = produtoRepository.findAllByCategoria(page, categoria);
+			listProduto = produtoPageable.getContent();
+		}else {
+			listProduto = produtoRepository.findAllByCategoria(categoria);
+		}
+		
+		return listProduto.stream()
+		        .map(entity -> new ProdutoDTO(entity.getIdProduto(), entity.getSku(), entity.getNomeProduto(), entity.getDescricaoProduto(), entity.getImagemProduto(),
+		        		entity.getPrecoProduto(), null != entity.getFornecedor() ? entity.getFornecedor().getRazaoSocial() : null, 
+		        				null != entity.getCategoria() ? entity.getCategoria().getNomeCategoria() : null))
+		        .collect(Collectors.toList());
+	}
+	
+	
 	
 	public List<ProdutoInterfaceDTO> buscaDTO(String keyword){
 		return produtoRepository.busca(keyword);

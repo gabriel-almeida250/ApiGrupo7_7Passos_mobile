@@ -52,7 +52,6 @@ INDEX VERSION 1.131+C:\api_Grupo7_ecommerce\.metadata\.plugins\org.eclipse.jdt.c
 3978369755.index
 1138039072.index
 577448811.index
-2423405065.index
 2201352217.index
 2001140010.index
 2645244225.index

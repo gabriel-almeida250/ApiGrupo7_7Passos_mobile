@@ -6,4 +6,5 @@ import com.residencia.comercio.entities.Categoria;
 
 public interface CategoriaRepository extends JpaRepository<Categoria,Integer> {
 
+	
 }

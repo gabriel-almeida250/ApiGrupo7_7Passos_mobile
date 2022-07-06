@@ -1,13 +1,15 @@
 package com.residencia.comercio.repositories;
 
-import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.residencia.comercio.dtos.ProdutoInterfaceDTO;
+import com.residencia.comercio.entities.Categoria;
 import com.residencia.comercio.entities.Produto;
 
 public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
@@ -30,4 +32,8 @@ public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
 			+ " )"
 			, nativeQuery = true)
 	List<ProdutoInterfaceDTO> busca(@Param("keyword") String keyword);
+	
+	 List<Produto> findAllByCategoria(Categoria categoria);
+	 Page<Produto> findAllByCategoria(Pageable page,Categoria categoria);
+
 }

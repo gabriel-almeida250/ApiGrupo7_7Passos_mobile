@@ -71,6 +71,18 @@ public class ProdutoController {
 			return new ResponseEntity<>(produtoDTOList, HttpStatus.OK);
 	}
 	
+	@GetMapping("/categoria")
+	public ResponseEntity<List<ProdutoDTO>> findAllDTOByCategoria(@RequestParam(required = false) Integer pagina,
+			@RequestParam(required = false) Integer qtdRegistros,
+			@RequestParam(required = false) Integer idCategoria
+			){
+		List<ProdutoDTO> produtoDTOList = produtoService.findAllDTOByCategoria(pagina, qtdRegistros, idCategoria);
+		if(produtoDTOList.isEmpty())
+			throw new NoSuchElementFoundException("Não foram encontrados Produtos");
+		else
+			return new ResponseEntity<>(produtoDTOList, HttpStatus.OK);
+	}
+	
 	@GetMapping("/busca")
 	public ResponseEntity<List<ProdutoInterfaceDTO>> buscaDTO(@RequestParam(required = true) String keyword){
 		List<ProdutoInterfaceDTO> produtoDTOList = produtoService.buscaDTO(keyword);
