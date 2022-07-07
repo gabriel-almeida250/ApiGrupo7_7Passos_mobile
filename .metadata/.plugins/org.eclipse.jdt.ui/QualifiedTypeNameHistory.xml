@@ -7,4 +7,8 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
     <fullyQualifiedTypeName name="org.springframework.http.ResponseEntity"/>
     <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.residencia.comercio.repositories.CategoriaRepository"/>
+    <fullyQualifiedTypeName name="com.residencia.comercio.entities.Categoria"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.Pageable"/>
 </qualifiedTypeNameHistroy>
